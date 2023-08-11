@@ -1,4 +1,7 @@
 import os
+from readFile import readFile
+
+readFile_handler = readFile()
 
 def clear():
     os.system('cls')
@@ -7,8 +10,9 @@ def clear():
 def cargarArchivo():
     clear()
     print("------------Opcion Cargar Archivo------------")
-    ruta = input("Ingrese ruta del archivo: ")
-    clear()
+    #ruta = input("Ingrese ruta del archivo: ")
+    #clear()
+    readFile_handler.cargarXml()
     #readFile_handler.leer_archivo_inv(ruta)
     print("----------------------------------------------")
     input("Presione enter para continuar...")
