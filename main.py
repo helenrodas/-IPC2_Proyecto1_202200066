@@ -1,7 +1,9 @@
 import os
 from readFile import readFile
+from listaSimple import listaSimple
 
 readFile_handler = readFile()
+lista_Simple = listaSimple()
 
 def clear():
     os.system('cls')
@@ -13,6 +15,7 @@ def cargarArchivo():
     #ruta = input("Ingrese ruta del archivo: ")
     #clear()
     readFile_handler.cargarXml()
+    # readFile_handler.imprimir_lista()
     #readFile_handler.leer_archivo_inv(ruta)
     print("----------------------------------------------")
     input("Presione enter para continuar...")
@@ -55,7 +58,8 @@ def datosEstudiante():
 def generarGrafica():
     clear()
     #readFile_handler.crear_archivo_txt(ruta)
-    print("Espacio para generar grafica")
+    
+    
     print("----------------------------------------------")
     input("Presione enter para continuar...")
     clear()

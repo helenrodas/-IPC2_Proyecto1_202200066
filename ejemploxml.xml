@@ -1,8 +1,13 @@
 <senales>
-    <senal nombre="Prueba 1" t="5" A="4">
-        <dato t="1" A="1">2</dato>
+    <senal nombre="Prueba 1" t="2" A="5">
         <dato t="1" A="2">4</dato>
-        <dato t="1" A="4">4</dato>
+        <dato t="1" A="3">7</dato>
+        <dato t="1" A="4">0</dato>
+        <dato t="1" A="5">5</dato>
+        <dato t="2" A="1">1</dato>
+        <dato t="2" A="2">3</dato>
+        <dato t="2" A="3">5</dato>
+        <dato t="2" A="4">0</dato>
+        <dato t="2" A="5">5</dato>
     </senal>
-
 </senales>
