@@ -1,9 +1,11 @@
 import os
 from readFile import readFile
 from listaSimple import listaSimple
+from lista_senales import lista_senales
 
 readFile_handler = readFile()
 lista_Simple = listaSimple()
+lista_senal_handler = lista_senales()
 
 def clear():
     os.system('cls')
@@ -15,6 +17,8 @@ def cargarArchivo():
     #ruta = input("Ingrese ruta del archivo: ")
     #clear()
     readFile_handler.cargarXml()
+    
+    
     # readFile_handler.imprimir_lista()
     #readFile_handler.leer_archivo_inv(ruta)
     print("----------------------------------------------")
@@ -25,7 +29,9 @@ def cargarArchivo():
 def procesarArchivo():
     clear()
     #readFile_handler.leer_archivo_mov(ruta)
-    print("Realizando operaciones")
+    # print("Realizando operaciones")
+    print("")
+    readFile_handler.imprimir_nodos()
     print("----------------------------------------------")
     input("Presione enter para continuar...")
     clear()
@@ -58,8 +64,9 @@ def datosEstudiante():
 def generarGrafica():
     clear()
     #readFile_handler.crear_archivo_txt(ruta)
+    nombre_matriz = input("Ingrese nombre de la matriz a graficar: ")
     
-    
+    readFile_handler.mostrar_grafica(nombre_matriz)
     print("----------------------------------------------")
     input("Presione enter para continuar...")
     clear()
@@ -68,7 +75,10 @@ def generarGrafica():
 def inicializarSistema():
     clear()
     #readFile_handler.crear_archivo_txt(ruta)
-    print("Iniciar...")
+    print("Inicializando Programa...")
+    readFile_handler.inicializar_sistema()
+    print("-------------------------")
+    print("Terminado")
     print("----------------------------------------------")
     input("Presione enter para continuar...")
     clear()
@@ -129,8 +139,8 @@ def menuInicial():
             generarGrafica()
             menuInicial()
         except:
-            clear()
-            print("----Error!----")
+            # clear()
+            print("-------------")
             menuInicial()
     elif opcion=="6":
         try:
