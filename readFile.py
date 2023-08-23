@@ -44,7 +44,7 @@ class readFile():
                                 if tiempo_en_nodo == str(tiempo) and amp == str(i):
                                     found_amps += amp
                                     break
-
+                            
                             if str(i) not in found_amps:
                                 nodoDato = CDato(tiempo,i,0,0)
 
@@ -52,8 +52,10 @@ class readFile():
                                 nodoDato = CDato(tiempo,i,valor, valor_binario)
 
                             self.lista_dato_temporal.insertar(nodoDato)
-
+                    # self.crear_grupo(self.lista_dato_temporal,tiempo_senal)
                     self.lista_senal_temporal.insertar(CSenal(nombre_prueba,tiempo_senal,amplitud_senal,self.lista_dato_temporal))
+                    self.lista_senal_temporal.imprimir_lista_binaria()
+                    self.crear_grupos(self.lista_dato_temporal,tiempo_senal,amplitud_senal)
                 print("Archivo Cargado!")
 
         except Exception as err:
@@ -70,6 +72,7 @@ class readFile():
     
     def imprimir_nodos(self):
         self.lista_senal_temporal.imprimir_lista()
+        self.lista_senal_temporal.imprimir_lista_binaria()
     
     def mostrar_grafica(self,nombre):
         self.lista_senal_temporal.buscar_nombre(nombre)
@@ -77,8 +80,38 @@ class readFile():
     
     def inicializar_sistema(self):
         self.lista_senal_temporal.eliminar_datos()
+        
+        
+    def crear_grupos(self,lista_datos,tiempo_senal,amplitud_senal):
+        for tiempo in range(1, int(tiempo_senal) + 1):
+            grupo_binario = ""
+            for i in range(1, int(amplitud_senal) + 1):
+                        
+                for nodo in lista_datos:
+                    amp = nodo.CDato.amplitud
+                    tiempo_en_nodo = nodo.CDato.tiempo
+                    valor=nodo.CDato.valor
+                    valor_binario=self.convertir_binario(valor)
+                    
+                    if tiempo == int(tiempo_en_nodo):
+                        grupo_binario += str(valor_binario)
+                    
+                    
+                    
+                    
+                    # if tiempo_en_nodo == str(tiempo) and amp == str(i):
+                    #     grupo_binario += valor_binario
+                    #     break
+                    # else:
+                    #     print("----Error----")
+                    
+                print(grupo_binario)
+                grupo_binario = ""
+                
 
     
+
+
     # def evaluar_nodos(self, lista_nodos, amplitud_senal, tiempo_senal):
     #     for tiempo in range(1, tiempo_senal + 1):
     #         found_amps = ""

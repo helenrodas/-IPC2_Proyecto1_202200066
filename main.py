@@ -40,8 +40,8 @@ def procesarArchivo():
 
 def archivoDeSalida():
     clear()
-    ruta = input("Ingrese una ruta especifica: ")
-    clear()
+    # ruta = input("Ingrese una ruta especifica: ")
+    # clear()
     #readFile_handler.crear_archivo_txt(ruta)
     print("----------------------------------------------")
     input("Presione enter para continuar...")

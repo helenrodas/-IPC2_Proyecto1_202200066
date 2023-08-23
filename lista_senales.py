@@ -50,7 +50,7 @@ class lista_senales:
     def imprimir_lista_binaria(self):
         actual = self.primero
         while actual != None:
-            actual.CSenal.lista_nodos_hijos.imprimir_lista_bin()
+            actual.CSenal.listaSimple.imprimir_lista_bin()
             actual = actual.siguiente
         print("---------------------------------------")
         print("")

@@ -31,6 +31,7 @@ class listaSimple:
             print(f"t: {actual.CDato.tiempo}, A: {actual.CDato.amplitud}, Valor: {actual.CDato.valorBinario}")
             actual = actual.siguiente
 
+
     def generar_grafica(self,nombre,amplitud,tiempo):
         f = open('bb.dot','w')
         # configuraciones del grafo
@@ -68,3 +69,14 @@ class listaSimple:
         os.system('dot -Tpng bb.dot -o grafica.png')
         print("terminado")
 
+    def __iter__(self):
+        self.actual = self.primero
+        return self
+
+    def __next__(self):
+        if self.actual is not None:
+            valor_actual = self.actual
+            self.actual = self.actual.siguiente
+            return valor_actual
+        else:
+            raise StopIteration
