@@ -83,6 +83,13 @@ def inicializarSistema():
     input("Presione enter para continuar...")
     clear()
 
+def pruebaGrupos():
+    # clear()
+    print("------------------------------------")
+    readFile_handler.crear_patrones()
+    print("----------------------------------------------")
+    input("Presione enter para continuar...")
+    clear()
 
 def salir():
     print("Programa finalizado")
@@ -128,11 +135,12 @@ def menuInicial():
             menuInicial()
     elif opcion=="4":
         try:
-            datosEstudiante()
+            pruebaGrupos()
+            # datosEstudiante()
             menuInicial()
         except:
-            clear()
-            print("----Error!----")
+            # clear()
+            # print("----Error!----")
             menuInicial()
     elif opcion=="5":
         try:

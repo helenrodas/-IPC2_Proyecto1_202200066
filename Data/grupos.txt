@@ -1,0 +1,4 @@
+------------Lista de Grupos------------
+t: 1, Grupo: 01101
+t: 2, Grupo: 11111
+t: 3, Grupo: 11111

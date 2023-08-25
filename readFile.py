@@ -3,12 +3,13 @@ from listaSimple import listaSimple
 from lista_senales import lista_senales
 from CSenal import CSenal
 from CDato import CDato
-from test import test
+from lista_grupos import lista_grupos
+from CGrupo import CGrupo
+from lista_patrones import lista_patrones
 
 
 # lista_Simple = listaSimple()
 # lista_senal = lista_senales()
-test_handler = test()
 # lista_dato_temporal = listaSimple()
 
 class readFile():
@@ -30,6 +31,8 @@ class readFile():
                     
                     self.lista_dato_temporal = listaSimple()
                     nodos_hijo = nodo.findall('dato') 
+                    lista_grupos_temp = lista_grupos()
+                    lista_patrones_temp = lista_patrones()
                     
                     for tiempo in range(1, int(tiempo_senal) + 1):
                         found_amps = ""
@@ -53,9 +56,10 @@ class readFile():
 
                             self.lista_dato_temporal.insertar(nodoDato)
                     # self.crear_grupo(self.lista_dato_temporal,tiempo_senal)
-                    self.lista_senal_temporal.insertar(CSenal(nombre_prueba,tiempo_senal,amplitud_senal,self.lista_dato_temporal))
+                    self.lista_senal_temporal.insertar(CSenal(nombre_prueba,tiempo_senal,amplitud_senal,self.lista_dato_temporal,lista_grupos_temp,lista_patrones_temp))
                     self.lista_senal_temporal.imprimir_lista_binaria()
-                    self.crear_grupos(self.lista_dato_temporal,tiempo_senal,amplitud_senal)
+                    
+                    # self.crear_grupos(self.lista_dato_temporal,tiempo_senal)
                 print("Archivo Cargado!")
 
         except Exception as err:
@@ -81,35 +85,28 @@ class readFile():
     def inicializar_sistema(self):
         self.lista_senal_temporal.eliminar_datos()
         
+    def crear_patrones(self):
+        self.lista_senal_temporal.calcular_los_patrones("Prueba 1")
         
-    def crear_grupos(self,lista_datos,tiempo_senal,amplitud_senal):
-        for tiempo in range(1, int(tiempo_senal) + 1):
-            grupo_binario = ""
-            for i in range(1, int(amplitud_senal) + 1):
-                        
-                for nodo in lista_datos:
-                    amp = nodo.CDato.amplitud
-                    tiempo_en_nodo = nodo.CDato.tiempo
-                    valor=nodo.CDato.valor
-                    valor_binario=self.convertir_binario(valor)
-                    
-                    if tiempo == int(tiempo_en_nodo):
-                        grupo_binario += str(valor_binario)
-                    
-                    
-                    
-                    
-                    # if tiempo_en_nodo == str(tiempo) and amp == str(i):
-                    #     grupo_binario += valor_binario
-                    #     break
-                    # else:
-                    #     print("----Error----")
-                    
-                print(grupo_binario)
-                grupo_binario = ""
-                
-
     
+    # def crear_grupos(self,lista_datos,tiempo_senal):
+    #     lista_grupos_handler = lista_grupos()
+    #     for tiempo in range(1, int(tiempo_senal) + 1):
+    #         grupo_binario = ""
+                        
+    #         for nodo in lista_datos:
+    #             tiempo_en_nodo = nodo.CDato.tiempo
+    #             valor_binario=nodo.CDato.valorBinario
+                    
+    #             if tiempo == int(tiempo_en_nodo):
+    #                 grupo_binario += str(valor_binario)
+
+    #         grupo = CGrupo(grupo_binario,tiempo)
+    #         lista_grupos_handler.insertar(grupo)
+    #         grupo_binario = ""
+    #     lista_grupos_handler.imprimir_lista()
+        # lista_grupos_handler.agrupar()
+            # print(grupo_binario)
 
 
     # def evaluar_nodos(self, lista_nodos, amplitud_senal, tiempo_senal):

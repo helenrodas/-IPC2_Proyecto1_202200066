@@ -1,5 +1,7 @@
 from nodo_senal import nodo_senal
 from listaSimple import listaSimple
+from CPatron import CPatron
+from lista_patrones import lista_patrones
 
 class lista_senales:
     def __init__(self):
@@ -82,10 +84,43 @@ class lista_senales:
             #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
             actual=actual.siguiente
     
-    
     def eliminar_datos(self):
         while self.primero:
             actual = self.primero
             self.primero = self.primero.siguiente
             del actual
             self.contador_matrices-=1
+    
+    
+    def calcular_los_patrones(self,nombre):
+        # recorremos la lista de carceles hasta encontrar una coincidencia
+        actual = self.primero
+        while actual != None:
+        # Si entra al if, es por que encontramos la carcel que queremos
+            if actual.CSenal.nombre==nombre:
+                # Obtenemos sus patrones
+                actual.CSenal.lista_grupos = actual.CSenal.listaSimple.devolver_patrones_por_nivel(actual.CSenal.lista_grupos)
+                # Imprimimos todos sus patrones
+                actual.CSenal.lista_grupos.recorrer()
+                # obtenemos los grupos
+                lista_grupos_temporal=actual.CSenal.lista_grupos
+                grupos_sin_analizar=lista_grupos_temporal.encontrar_coincidencias()
+                # Este es un string, por ejemplo "1,2--3,5--4"
+                print(grupos_sin_analizar)
+                # por cada grupo recorrer la matriz original e ir devolviendo las coordenadas especificadas
+                #recordando que por cada coincidencia encontrada, se va borrando para dejar solo las que no tienen grupo.
+                buffer=""
+                for digito in grupos_sin_analizar:
+                    if digito.isdigit() or digito==",":
+                        buffer+=digito
+                    elif digito =="-" and buffer!="":
+                        cadena_grupo=actual.CSenal.listaSimple.devolver_cadena_del_grupo(buffer)
+                        actual.CSenal.lista_patrones.insertar_dato(CPatron(buffer,cadena_grupo))
+                        buffer=""
+                    else:
+                        buffer=""
+                actual.CSenal.lista_patrones.recorrer_e_imprimir_lista()
+
+                return
+            actual=actual.siguiente
+        print ("No se encontró la Senal")
