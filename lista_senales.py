@@ -2,6 +2,8 @@ from nodo_senal import nodo_senal
 from listaSimple import listaSimple
 from CPatron import CPatron
 from lista_patrones import lista_patrones
+from lista_datos_suma import lista_datos_suma
+from CDatosSuma import CDatosSuma
 
 class lista_senales:
     def __init__(self):
@@ -116,11 +118,34 @@ class lista_senales:
                     elif digito =="-" and buffer!="":
                         cadena_grupo=actual.CSenal.listaSimple.devolver_cadena_del_grupo(buffer)
                         actual.CSenal.lista_patrones.insertar_dato(CPatron(buffer,cadena_grupo))
+                        actual.CSenal.lista_patrones.recorrer_e_imprimir_lista()
+                        self.vamos(actual.CSenal.listaSimple,actual.CSenal.amplitud_senal,buffer,actual.CSenal.lista_patrones.getSize(),buffer)
+                        
                         buffer=""
                     else:
                         buffer=""
-                actual.CSenal.lista_patrones.recorrer_e_imprimir_lista()
+                # actual.CSenal.lista_patrones.recorrer_e_imprimir_lista()
 
                 return
             actual=actual.siguiente
         print ("No se encontró la Senal")
+    
+    def vamos(self, lista_datos, amplitud, grupo,cont,buffer):
+            suma = 0
+            contador = 0
+            string_resultado = ""
+            lista_suma = lista_datos_suma()
+            tiempo_sin_comas = grupo.replace(",","")
+            for i in range(1, int(amplitud)+1):
+                for datos_lista in lista_datos:
+                    if str(datos_lista.CDato.tiempo) in grupo and int(datos_lista.CDato.amplitud) == i:
+                        suma = suma + int(datos_lista.CDato.valor)
+                        contador += 1
+                        if contador == len(tiempo_sin_comas):
+                            string_resultado+=str(suma)+","
+                            lista_suma.insertar_dato(CDatosSuma(datos_lista.CDato.amplitud,buffer, str(suma),cont ))
+                contador = 0
+                suma = 0
+            # print("PROBANDOOOOOOOOOOOOO")
+            # print(string_resultado)
+            lista_suma.recorrer_e_imprimir_lista()

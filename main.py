@@ -86,7 +86,7 @@ def inicializarSistema():
 def pruebaGrupos():
     # clear()
     print("------------------------------------")
-    readFile_handler.crear_patrones()
+    # readFile_handler.crear_patrones()
     print("----------------------------------------------")
     input("Presione enter para continuar...")
     clear()

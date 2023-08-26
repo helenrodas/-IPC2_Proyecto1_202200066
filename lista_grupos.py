@@ -4,16 +4,19 @@ class lista_grupos:
     def __init__(self):
         self.primero = None
         self.ultimo = None
+        self.contador = 1
         
             
     def insertar(self,CGrupo):
         if self.primero is None:
             self.primero=nodo_grupo(CGrupo)
+            self.contador+=1
             return
         actual=self.primero
         while actual.siguiente:
             actual=actual.siguiente
         actual.siguiente=nodo_grupo(CGrupo)
+        self.contador+=1
             
     def imprimir_lista(self):
         print("------------Lista de Grupos------------")
@@ -86,5 +89,5 @@ class lista_grupos:
         else:
             raise StopIteration
 
-
-
+    # def getSize(self):
+    #     return self.contador

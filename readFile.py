@@ -20,7 +20,7 @@ class readFile():
     
     def cargarXml(self):
         try:
-            with open('ejemploxml.xml', encoding='utf-8') as xml_file:
+            with open('datosPrueba.xml', encoding='utf-8') as xml_file:
                 root = ET.fromstring(xml_file.read())
                 NodoPadre = root.findall('senal') 
                 self.lista_senal_temporal = lista_senales()
@@ -58,6 +58,8 @@ class readFile():
                     # self.crear_grupo(self.lista_dato_temporal,tiempo_senal)
                     self.lista_senal_temporal.insertar(CSenal(nombre_prueba,tiempo_senal,amplitud_senal,self.lista_dato_temporal,lista_grupos_temp,lista_patrones_temp))
                     self.lista_senal_temporal.imprimir_lista_binaria()
+                    self.crear_patrones(nombre_prueba)
+                    # self.lista_senal_temporal.calcular_los_patrones(nombre_prueba)
                     
                     # self.crear_grupos(self.lista_dato_temporal,tiempo_senal)
                 print("Archivo Cargado!")
@@ -85,8 +87,8 @@ class readFile():
     def inicializar_sistema(self):
         self.lista_senal_temporal.eliminar_datos()
         
-    def crear_patrones(self):
-        self.lista_senal_temporal.calcular_los_patrones("Prueba 1")
+    def crear_patrones(self,nombre):
+        self.lista_senal_temporal.calcular_los_patrones(nombre)
         
     
     # def crear_grupos(self,lista_datos,tiempo_senal):

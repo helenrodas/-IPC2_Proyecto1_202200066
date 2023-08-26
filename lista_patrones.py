@@ -4,9 +4,7 @@ class lista_patrones:
     def __init__(self):
         self.primero = None
         self.contador_grupos=0
-
-    def print_me():
-        print('ok')
+        
 
     def insertar_dato(self,CPatron):
             if self.primero is None:
@@ -31,3 +29,5 @@ class lista_patrones:
             actual = actual.siguiente
         print("===========================================================================================")
         
+    def getSize(self):
+        return self.contador_grupos
