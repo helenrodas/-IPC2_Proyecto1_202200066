@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<senalesReducidas>
+    <senal nombre="fff" A="3">
+        <grupo grupo="1">
+            <tiempos>1,2,</tiempos>
+            <datosGrupo>
+                <dato A="1">10</dato>
+                <dato A="2">10</dato>
+                <dato A="3">0</dato>
+    </datosGrupo>
+    </grupo>
+    </senal>
+    <senal nombre="Prueba 1" A="3">
+        <grupo grupo="1">
+            <tiempos>1,2,</tiempos>
+            <datosGrupo>
+                <dato A="1">8</dato>
+                <dato A="2">12</dato>
+                <dato A="3">0</dato>
+    </datosGrupo>
+    </grupo>
+    </senal>
+    <senal nombre="Prueba 3" A="3">
+        <grupo grupo="1">
+            <tiempos>1,2,</tiempos>
+            <datosGrupo>
+                <dato A="1">8</dato>
+                <dato A="2">12</dato>
+                <dato A="3">0</dato>
+        </datosGrupo>
+        </grupo>
+        <grupo grupo="2">
+            <tiempos>3,4,</tiempos>
+            <datosGrupo>
+                <dato A="1">0</dato>
+                <dato A="2">0</dato>
+                <dato A="3">0</dato>
+            </datosGrupo>
+        </grupo>
+    </senal>
+</senalesReducidas>

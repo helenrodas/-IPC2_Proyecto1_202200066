@@ -1,6 +1,5 @@
 from nodo import nodo
 from CGrupo import CGrupo
-import sys
 import os
 
 class listaSimple:
@@ -38,30 +37,22 @@ class listaSimple:
         fila_iniciada=False
         recolector_patron=""
         while actual != None:
-            # si hay cambio de fila entramos al if
             if  sentinela_de_filas!=actual.CDato.tiempo:
-                # fila iniciada se vuelve false, por que se acaba la `fila`
                 fila_iniciada=False
-                # ya que terminamos la fila, podemos guardar los patrones
                 lista_grupos.insertar(CGrupo(sentinela_de_filas,recolector_patron))
                 recolector_patron=""
-                # actualizamos el valor de la fila (nivel)
                 sentinela_de_filas=actual.CDato.tiempo
-            # si fila iniciada es false, quiere decir que acaba de terminar fila y debemos empezar una nueva
+
             if fila_iniciada==False:
                 fila_iniciada=True
-                #Recolectamos el valor, ya que estamos en la fila
                 recolector_patron+=str(actual.CDato.valorBinario)+"-"
             else:
-                #Recolectamos el valor, ya que estamos en la fila
                 recolector_patron+=str(actual.CDato.valorBinario)+"-"
             actual = actual.siguiente
-        # Agregamos un nuevo patrón, sería el de toda la fila, ej: 0-1-1-1
         lista_grupos.insertar(CGrupo(sentinela_de_filas,recolector_patron))
-        # devolvermos la lista llena con los patrones
         return lista_grupos
 
-    def generar_grafica(self,nombre,amplitud,tiempo):
+    def generar_grafica(self,nombre,amplitud,tiempo,nombre_archivo):
         f = open('bb.dot','w')
         # configuraciones del grafo
         text ="""
@@ -95,7 +86,7 @@ class listaSimple:
         f.write(text)
         f.close()
         os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
-        os.system('dot -Tpng bb.dot -o grafica.png')
+        os.system('dot -Tpng bb.dot -o {nombre_archivo}.png')
         print("terminado")
 
     def __iter__(self):
@@ -136,3 +127,19 @@ class listaSimple:
                 buffer=""
         #devolvemos el string resultado
         return string_resultado
+
+    def vacia(self):
+        if self.primero == None:
+            return True
+        else:
+            return 
+    
+    def actualizar_datos(self,t,A,valor,valorBinario):
+        actual = self.primero
+
+        while actual:
+            actual.CDato.tiempo = t
+            actual.CDato.amplitud = A
+            actual.CDato.valor = valor
+            actual.CDato.valorBinario = valorBinario
+            actual = actual.siguiente

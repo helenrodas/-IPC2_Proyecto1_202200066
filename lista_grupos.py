@@ -4,26 +4,23 @@ class lista_grupos:
     def __init__(self):
         self.primero = None
         self.ultimo = None
-        self.contador = 1
-        
+
             
     def insertar(self,CGrupo):
         if self.primero is None:
             self.primero=nodo_grupo(CGrupo)
-            self.contador+=1
             return
         actual=self.primero
         while actual.siguiente:
             actual=actual.siguiente
         actual.siguiente=nodo_grupo(CGrupo)
-        self.contador+=1
             
-    def imprimir_lista(self):
-        print("------------Lista de Grupos------------")
-        actual = self.primero
-        while actual != None:
-            print(f"t: {actual.CGrupo.tiempo}, Grupo: {actual.CGrupo.grupo}")
-            actual = actual.siguiente
+    # def imprimir_lista(self):
+    #     print("------------Lista de Grupos------------")
+    #     actual = self.primero
+    #     while actual != None:
+    #         print(f"t: {actual.CGrupo.tiempo}, Grupo: {actual.CGrupo.grupo}")
+    #         actual = actual.siguiente
     
     def recorrer(self):
         print("===========================================================================================")
@@ -47,17 +44,16 @@ class lista_grupos:
             anterior.siguiente = actual.siguiente
             actual.siguiente = None
 
+
     def encontrar_coincidencias(self):
         print("")
         print("")
-
         resultado = "" 
 
         while self.primero:
-            actual = self.primero  # Comienza desde el primer nodo en la lista
-            temp_string = ""  # String temporal para almacenar niveles coincidentes
-            temp_tiempo = ""  # Lista temporal para almacenar niveles      
-        # Bucle interno para recorrer la lista de nodos y buscar coincidencias
+            actual = self.primero  
+            temp_string = ""  
+            temp_tiempo = ""        
         
             while actual:
                 if actual.CGrupo.grupo == self.primero.CGrupo.grupo:
@@ -75,7 +71,8 @@ class lista_grupos:
                     else:
                         buffer=""
             resultado+=temp_tiempo+"--"
-        return resultado  # Devuelve el resultado final con la agrupación de niveles
+        return resultado  
+
 
     def __iter__(self):
         self.actual = self.primero
@@ -89,5 +86,3 @@ class lista_grupos:
         else:
             raise StopIteration
 
-    # def getSize(self):
-    #     return self.contador
