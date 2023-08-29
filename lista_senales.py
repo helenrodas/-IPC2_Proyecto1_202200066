@@ -31,38 +31,18 @@ class lista_senales:
     
     
     def imprimir_lista(self):
-        print("Total matrices almacenadas: " , self.contador_matrices)
-        print("")
-        
         if self.contador_matrices <= 0:
             print("-----------------------------")
-            print("No hay datos para mostrar")
+            print("No hay datos...")
             print("-----------------------------")
-            return
+            return None
         else:
             print("Realizando operaciones...")
             print("")
-            nombre_temporal = None
             actual = self.primero
-            while actual != None:
-                if actual.CSenal.nombre != nombre_temporal:
-                    print("---------------------------------------------")
-                    print(f"nombre: {actual.CSenal.nombre}, Tiempo: {actual.CSenal.tiempo_senal}, Amplitud: {actual.CSenal.amplitud_senal}")
-                    print("---------------------------------------------")
-                    nombre_temporal = actual.CSenal.nombre
-                actual.CSenal.listaSimple.imprimir_lista()
-                
-                actual = actual.siguiente
-    
-    
-    def imprimir_lista_binaria(self):
-        actual = self.primero
-        while actual != None:
-            actual.CSenal.listaSimple.imprimir_lista_bin()
-            actual = actual.siguiente
-        print("---------------------------------------")
-        print("")
-        
+            actual.CSenal.listaSimple.imprimir_lista()
+            return True
+
         
     def buscar_nombre(self,nombre):
         actual = self.primero
@@ -81,14 +61,12 @@ class lista_senales:
             print("Nombre no encontrado!")
             
     
-    
     def grafica_mi_lista_original(self):
         actual=self.primero
         while actual != None:
             actual.CSenal.listaSimple.generar_grafica(actual.CSenal.nombre,
                                                     str(actual.CSenal.amplitud_senal),
                                                     str(actual.CSenal.tiempo_senal))
-            #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
             actual=actual.siguiente
     
     
@@ -100,19 +78,15 @@ class lista_senales:
             self.contador_matrices-=1
     
     
-    def calcular_los_patrones(self,nombre,lista_suma):
+    def calcular_patrones(self,nombre,lista_suma):
         actual = self.primero
         while actual != None:
             if actual.CSenal.nombre==nombre:
                 actual.CSenal.lista_grupos = actual.CSenal.listaSimple.devolver_patrones_por_nivel(actual.CSenal.lista_grupos)
 
-                # actual.CSenal.lista_grupos.recorrer()
-
                 lista_grupos_temporal=actual.CSenal.lista_grupos
 
                 grupos_sin_analizar=lista_grupos_temporal.encontrar_coincidencias()
-
-                # print(grupos_sin_analizar)
 
                 buffer=""
                 for digito in grupos_sin_analizar:
@@ -123,28 +97,24 @@ class lista_senales:
                         
                         actual.CSenal.lista_patrones.insertar_dato(CPatron(buffer,cadena_grupo,actual.CSenal.lista_patrones.get_contador()))
                         
-                        # actual.CSenal.lista_patrones.recorrer_e_imprimir_lista()
-                        
                         self.sumar_grupo(actual.CSenal.listaSimple,actual.CSenal.amplitud_senal,buffer,actual.CSenal.lista_patrones.getSize(),lista_suma)
                         
                         buffer=""
                     else:
                         buffer=""
-                actual.CSenal.lista_patrones.recorrer_e_imprimir_lista()
-
                 return
             actual=actual.siguiente
-        print ("No se encontró la CSenal")
+        print ("No se encontraron datos")
         
         
     def actualizar_matriz(self,nombre):
         data = None
         actual = self.primero
-
         while actual:
             if actual.CSenal.nombre == nombre:
                 if data is None:
                     self.primero = actual.siguiente
+                    print("Matriz Actualizada....")
                 else:
                     data.siguiente = actual.siguiente 
                     print("Matriz Actualizada....")
@@ -166,10 +136,9 @@ class lista_senales:
                         contador += 1
                         if contador == len(tiempo_sin_comas):
                             string_resultado+=str(suma)+","
-                            lista_suma.insertar_dato(CDatosSuma(datos_lista.CDato.amplitud,grupo, suma,cont ))
+                            lista_suma.insertar(CDatosSuma(datos_lista.CDato.amplitud,grupo, suma,cont ))
                 contador = 0
                 suma = 0
-            # lista_suma.recorrer_e_imprimir_lista()
     
     
     def generar_grafica_normal(self,nombre,nombre_archivo):
@@ -200,7 +169,7 @@ class lista_senales:
             actual = actual.siguiente
 
         if verificar:
-                actual.CSenal.lista_datos_suma.generar_grafica_sumas(actual.CSenal.nombre,str(actual.CSenal.amplitud_senal),str(actual.CSenal.tiempo_senal),nombre_archivo)
+                actual.CSenal.lista_datos_suma.grafica_sumas(actual.CSenal.nombre,str(actual.CSenal.amplitud_senal),nombre_archivo)
                 actual=actual.siguiente
         else:
             print("no se encontro en la lista")
@@ -212,7 +181,7 @@ class lista_senales:
             del actual
     
     
-    def actualizar_tem(self,lista_temporal_suma,nombre):
+    def actualizar(self,lista_temporal_suma,nombre):
         actual = self.primero
         while actual:
             if actual.CSenal.nombre ==  nombre:
@@ -221,7 +190,6 @@ class lista_senales:
             actual = actual.siguiente
     
     def generar_archivo_xml(self,nombre):
-        # Crear el elemento raíz
         senales_reducidas = ET.Element("senalesReducidas")
         actual = self.primero
 
@@ -243,14 +211,13 @@ class lista_senales:
 
             actual = actual.siguiente
             
-        # Crear el árbol XML
-        self.prettify_xml(senales_reducidas)
+        self.ajustes_xml(senales_reducidas)
         tree = ET.ElementTree(senales_reducidas)
         print("Proceso terminado correctamente...")
         tree.write(f"{nombre}.xml", encoding="utf-8", xml_declaration=True)
 
-    def prettify_xml(self,element, indent='    '):
-        queue = [(0, element)]  # (level, element)
+    def ajustes_xml(self,element, indent='    '):
+        queue = [(0, element)] 
         while queue:
             level, element = queue.pop(0)
             children = [(level + 1, child) for child in list(element)]

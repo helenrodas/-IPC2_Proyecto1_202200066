@@ -1,12 +1,31 @@
 
-            digraph G {"Amplitud=3"->" fff" bgcolor="#3990C4" style="filled"
+            digraph G {"Amplitud=4"->" Prueba 1" bgcolor="#3990C4" style="filled"
             subgraph cluster1 {fillcolor="blue:red" style="filled"
             node [shape=circle fillcolor="gold:brown" style="radial" gradientangle=180]
             a0 [ label=<
             <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="blue:red" gradientangle="315">
-<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=1 t=1,2,</TD>
-<TD border="3"  bgcolor="lavender" gradientangle="315">10</TD>
-<TD border="3"  bgcolor="lavender" gradientangle="315">10</TD>
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=1 t=1,4,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">7</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">7</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">13</TD>
+</TR>
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=2 t=2,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">4</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">2</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">5</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">7</TD>
+</TR>
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=3 t=3,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">3</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">2</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">2</TD>
+</TR>
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=4 t=5,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">6</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">2</TD>
 <TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
  </TR></TABLE>>];
                 }

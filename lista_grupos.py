@@ -14,24 +14,9 @@ class lista_grupos:
         while actual.siguiente:
             actual=actual.siguiente
         actual.siguiente=nodo_grupo(CGrupo)
-            
-    # def imprimir_lista(self):
-    #     print("------------Lista de Grupos------------")
-    #     actual = self.primero
-    #     while actual != None:
-    #         print(f"t: {actual.CGrupo.tiempo}, Grupo: {actual.CGrupo.grupo}")
-    #         actual = actual.siguiente
+
     
-    def recorrer(self):
-        print("===========================================================================================")
-        actual = self.primero
-        while actual != None:
-            print(" Tiempo: ",actual.CGrupo.tiempo,"Cadena-Patron: ",actual.CGrupo.grupo)
-            actual = actual.siguiente
-        print("===========================================================================================")
-        
-    
-    def eliminar(self,tiempo):
+    def eliminar_grupo(self,tiempo):
         actual = self.primero
         anterior = None
         while actual and actual.CGrupo.tiempo != tiempo:
@@ -46,32 +31,29 @@ class lista_grupos:
 
 
     def encontrar_coincidencias(self):
-        print("")
-        print("")
-        resultado = "" 
+        coincidencia = "" 
 
         while self.primero:
             actual = self.primero  
-            temp_string = ""  
-            temp_tiempo = ""        
+            temp_coincidencia = ""        
         
             while actual:
                 if actual.CGrupo.grupo == self.primero.CGrupo.grupo:
-                    temp_tiempo+=(str(actual.CGrupo.tiempo))+","  
+                    temp_coincidencia+=(str(actual.CGrupo.tiempo))+","  
                 actual=actual.siguiente
             
             buffer=""
-            for digito in temp_tiempo:
+            for digito in temp_coincidencia:
                 if digito.isdigit():
                     buffer+=digito
                 else:
                     if buffer!="":
-                        self.eliminar(int(buffer))
+                        self.eliminar_grupo(int(buffer))
                         buffer=""
                     else:
                         buffer=""
-            resultado+=temp_tiempo+"--"
-        return resultado  
+            coincidencia+=temp_coincidencia+"--"
+        return coincidencia  
 
 
     def __iter__(self):

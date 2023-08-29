@@ -22,14 +22,11 @@ class lista_patrones:
             self.contador_grupos+=1
             self.contador+=1
 
-
-    def recorrer_e_imprimir_lista(self):
-        print("===========================================================================================")
-        actual = self.primero
-        while actual != None:
-            print(" Grupo: ",actual.CPatron.grupo_tiempos,"Cadena-grupo: ",actual.CPatron.grupo_valores)
-            actual = actual.siguiente
-        print("===========================================================================================")
+    def imprimir_proceso(self):
+        print(">>>Creando Grupos...")
+        print("")
+        print(">>>Realizando sumas...")
+    
         
     def getSize(self):
         return self.contador_grupos
