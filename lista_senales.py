@@ -128,18 +128,30 @@ class lista_senales:
             suma = 0
             contador = 0
             string_resultado = ""
-            tiempo_sin_comas = grupo.replace(",","")
+            count = grupo.count(',')
+            # tiempo_sin_comas = grupo.replace(",","")
             for i in range(1, int(amplitud)+1):
                 for datos_lista in lista_datos:
-                    if str(datos_lista.CDato.tiempo) in grupo and int(datos_lista.CDato.amplitud) == i:
+                    if self.control(str(datos_lista.CDato.tiempo),grupo) and int(datos_lista.CDato.amplitud) == i:
                         suma = suma + int(datos_lista.CDato.valor)
                         contador += 1
-                        if contador == len(tiempo_sin_comas):
+                        if contador == count:
                             string_resultado+=str(suma)+","
                             lista_suma.insertar(CDatosSuma(datos_lista.CDato.amplitud,grupo, suma,cont ))
                 contador = 0
                 suma = 0
     
+    def control(self,tiempo,grupo_tiempos):
+        ini = 0
+        stop = 0
+        while stop <= len(grupo_tiempos):
+            if stop == len(grupo_tiempos) or grupo_tiempos[stop] == ',':
+                tiempo_actual = grupo_tiempos[ini:stop]
+                if tiempo_actual == tiempo:
+                    return True
+                ini = stop + 1
+            stop += 1
+        return False
     
     def generar_grafica_normal(self,nombre,nombre_archivo):
         actual = self.primero
