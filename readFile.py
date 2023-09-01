@@ -107,7 +107,7 @@ class readFile():
     def generar_grafica(self,nombre,nombre_de_grafica):
         self.lista_senal_temporal.generar_grafica_normal(nombre,nombre_de_grafica)
 
-    def generar_reducida_reducida(self,nombre,nombre_de_grafica):
+    def grafica_reducida(self,nombre,nombre_de_grafica):
         self.lista_senal_temporal.generar_grafica_reducida(nombre,nombre_de_grafica)
     
     def eliminar_lista(self):

@@ -48,7 +48,7 @@ class main:
                 readFile_handler.generar_grafica(nombre,nombre_de_grafica)
             elif opcion == 2:
                 nombre_de_grafica_reducida = input("Con que nombre desea guardar la grafica: ")
-                readFile_handler.generar_reducida_reducida(nombre,nombre_de_grafica_reducida)
+                readFile_handler.grafica_reducida(nombre,nombre_de_grafica_reducida)
             else:
                 print("opcion no valida")
             

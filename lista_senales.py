@@ -125,21 +125,20 @@ class lista_senales:
                 
     
     def sumar_grupo(self, lista_datos, amplitud, grupo,cont,lista_suma):
-            suma = 0
+            temp_suma = 0
             contador = 0
-            string_resultado = ""
+            resultadoAsString = ""
             count = grupo.count(',')
-            # tiempo_sin_comas = grupo.replace(",","")
             for i in range(1, int(amplitud)+1):
                 for datos_lista in lista_datos:
                     if self.control(str(datos_lista.CDato.tiempo),grupo) and int(datos_lista.CDato.amplitud) == i:
-                        suma = suma + int(datos_lista.CDato.valor)
+                        temp_suma = temp_suma + int(datos_lista.CDato.valor)
                         contador += 1
                         if contador == count:
-                            string_resultado+=str(suma)+","
-                            lista_suma.insertar(CDatosSuma(datos_lista.CDato.amplitud,grupo, suma,cont ))
+                            resultadoAsString+=str(temp_suma)+","
+                            lista_suma.insertar(CDatosSuma(datos_lista.CDato.amplitud,grupo, temp_suma,cont ))
                 contador = 0
-                suma = 0
+                temp_suma = 0
     
     def control(self,tiempo,grupo_tiempos):
         ini = 0
