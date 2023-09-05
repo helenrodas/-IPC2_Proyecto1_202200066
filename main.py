@@ -41,12 +41,16 @@ class main:
             nombre =  input("ingrese el nombre de la matriz a graficar: ")
             print("---------------------------------------------")
             print("1. Grafica Matriz ordinaria")
-            print("2. Grafica Matriz reducida")
+            print("2. Grafica Matriz binaria")
+            print("3. Grafica Matriz reducida")
             opcion = int(input("Seleccione una opcion: "))
             if opcion == 1:
                 nombre_de_grafica = input("Con que nombre desea guardar la grafica: ")
                 readFile_handler.generar_grafica(nombre,nombre_de_grafica)
             elif opcion == 2:
+                nombre_de_grafica_binaria = input("Con que nombre desea guardar la grafica: ")
+                readFile_handler.grafica_bin(nombre,nombre_de_grafica_binaria)
+            elif opcion == 3:
                 nombre_de_grafica_reducida = input("Con que nombre desea guardar la grafica: ")
                 readFile_handler.grafica_reducida(nombre,nombre_de_grafica_reducida)
             else:

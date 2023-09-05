@@ -30,6 +30,24 @@ class lista_senales:
         self.contador_matrices+=1
     
     
+    # def recorrer_e_imprimir_lista(self):
+    #     print("Total matrices Almacenadas: ",self.contador_matrices)
+    #     print("")
+    #     print("")
+    #     print("*******************************************************************************************")
+    #     actual = self.primero
+    #     while actual != None:
+    #         print("Nombre:",actual.CSenal.nombre,"Amplitud:",actual.CSenal.amplitud_senal,"Tiempo:",actual.carcel.tiempo_senal)
+    #         # actual.carcel.lista_celdas.recorrer_e_imprimir_lista()
+    #         actual.CSenal.lista_patrones.recorrer_e_imprimir_lista_patrones()
+    #         actual = actual.siguiente
+    #     print("")
+    #     print("")
+    #     print("")
+    #     print("*******************************************************************************************")
+    #     print("")
+        
+    
     def imprimir_lista(self):
         if self.contador_matrices <= 0:
             print("-----------------------------")
@@ -184,12 +202,30 @@ class lista_senales:
                 actual=actual.siguiente
         else:
             print("no se encontro en la lista")
+        
+    def generar_grafica_bin(self,nombre,nombre_archivo):
+        actual = self.primero
+        verificar = False
+
+        while actual:
+            if actual.CSenal.nombre == nombre:
+                verificar = True
+                break
+            actual = actual.siguiente
+
+        if verificar:
+                actual.CSenal.listaSimple.generar_grafica_bin(actual.CSenal.nombre,str(actual.CSenal.amplitud_senal),str(actual.CSenal.tiempo_senal),nombre_archivo)
+                
+                actual=actual.siguiente
+        else:
+            print("no se encontro en la lista")
     
     def eliminar_lista_nodo(self):
         while self.primero:
             actual = self.primero
             self.primero = self.primero.siguiente
             del actual
+    
     
     
     def actualizar(self,lista_temporal_suma,nombre):

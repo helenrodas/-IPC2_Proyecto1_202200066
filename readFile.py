@@ -110,6 +110,9 @@ class readFile():
     def grafica_reducida(self,nombre,nombre_de_grafica):
         self.lista_senal_temporal.generar_grafica_reducida(nombre,nombre_de_grafica)
     
+    def grafica_bin(self,nombre,nombre_de_grafica):
+        self.lista_senal_temporal.generar_grafica_bin(nombre,nombre_de_grafica)
+    
     def eliminar_lista(self):
         self.lista_senal_temporal.eliminar_lista_nodo()
 

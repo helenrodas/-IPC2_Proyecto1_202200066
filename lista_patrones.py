@@ -27,6 +27,7 @@ class lista_patrones:
         print("")
         print(">>>Realizando sumas...")
     
+    
         
     def getSize(self):
         return self.contador_grupos
