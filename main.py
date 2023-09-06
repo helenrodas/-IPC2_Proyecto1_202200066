@@ -90,6 +90,7 @@ class main:
 
     def salir():
         print("Programa finalizado")
+        
 
 
     def menuInicial(self):
@@ -155,7 +156,9 @@ class main:
                 print("----Error!----")
                 self.menuInicial()
         elif opcion=="7":
-            self.salir()
+            print("-------------------------")
+            print("Programa Finalizado!")
+            print("-------------------------")
         else:
             self.clear()
             print("Indique una opción válida")

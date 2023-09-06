@@ -28,24 +28,6 @@ class lista_senales:
             actual=actual.siguiente
         actual.siguiente=nodo_senal(CSenal)
         self.contador_matrices+=1
-    
-    
-    # def recorrer_e_imprimir_lista(self):
-    #     print("Total matrices Almacenadas: ",self.contador_matrices)
-    #     print("")
-    #     print("")
-    #     print("*******************************************************************************************")
-    #     actual = self.primero
-    #     while actual != None:
-    #         print("Nombre:",actual.CSenal.nombre,"Amplitud:",actual.CSenal.amplitud_senal,"Tiempo:",actual.carcel.tiempo_senal)
-    #         # actual.carcel.lista_celdas.recorrer_e_imprimir_lista()
-    #         actual.CSenal.lista_patrones.recorrer_e_imprimir_lista_patrones()
-    #         actual = actual.siguiente
-    #     print("")
-    #     print("")
-    #     print("")
-    #     print("*******************************************************************************************")
-    #     print("")
         
     
     def imprimir_lista(self):

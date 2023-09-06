@@ -22,7 +22,8 @@ class readFile():
                 NodoPadre = root.findall('senal') 
                 self.lista_senal_temporal = lista_senales()
                 for nodo in NodoPadre:
-                    nombre_prueba = nodo.get('nombre')  
+                    nombre_prueba = nodo.get('nombre')
+                    print(f"Nombre:" ,nombre_prueba)
                     tiempo_senal = nodo.get('t')
                     amplitud_senal = nodo.get('A')
                     
@@ -63,7 +64,7 @@ class readFile():
                         
                         
                     else:
-                        print("Archivo no cumple con requerimientos")
+                        print(">> Senal no cumple con requerimientos")
                 print("Finalizado!")
         except Exception as err:
             print("Error:", err)

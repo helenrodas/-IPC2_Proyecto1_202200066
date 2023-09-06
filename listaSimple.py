@@ -62,11 +62,11 @@ class listaSimple:
     def generar_grafica(self,nombre,amplitud,tiempo,nombre_archivo):
         f = open('bb.dot','w')
         text ="""
-            digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="#3990C4" style="filled"
-            subgraph cluster1 {fillcolor="blue:red" style="filled"
+            digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="#b6ccf2" style="filled"
+            subgraph cluster1 {fillcolor="orange:red" style="filled"
             node [shape=circle fillcolor="gold:brown" style="radial" gradientangle=180]
             a0 [ label=<
-            <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="blue:red" gradientangle="315">\n"""
+            <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="orange:red" gradientangle="315">\n"""
         actual = self.primero
         sentinela_de_filas=actual.CDato.tiempo 
         fila_iniciada=False
@@ -95,11 +95,11 @@ class listaSimple:
     def generar_grafica_bin(self,nombre,amplitud,tiempo,nombre_archivo):
         f = open('bb.dot','w')
         text ="""
-            digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="#3990C4" style="filled"
-            subgraph cluster1 {fillcolor="blue:red" style="filled"
+            digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="#b6ccf2" style="filled"
+            subgraph cluster1 {fillcolor="orange:red" style="filled"
             node [shape=circle fillcolor="gold:brown" style="radial" gradientangle=180]
             a0 [ label=<
-            <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="blue:red" gradientangle="315">\n"""
+            <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="orange:red" gradientangle="315">\n"""
         actual = self.primero
         sentinela_de_filas=actual.CDato.tiempo 
         fila_iniciada=False
